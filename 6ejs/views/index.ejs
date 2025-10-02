@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <title>My EJS Page</title>
+  </head>
+  <body>
+    <!-- Display a heading with the value of the 'name' variable passed from the server -->
+    <h1>Hello, <%= name %>!</h1>
+    <!-- This paragraph is static text, always shown -->
+    <p>This page is rendered using EJS.</p>
+    <!--
+      <%= ... %> is used to output the value of a variable or expression.
+      You can use any variable that was passed to the template from res.render().
+    -->
+  </body>
+</html> 
