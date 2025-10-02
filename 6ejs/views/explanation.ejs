@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS Explained</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; }
+        h1, h2 { color: #333; }
+        code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .section { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Understanding EJS (Embedded JavaScript)</h1>
+
+        <!-- BASIC OUTPUT -->
+        <div class="section">
+            <h2>1. Basic Output with <%= %></h2>
+            <p>The <code>&lt;%= %&gt;</code> tag is used to output the value of a variable or a JavaScript expression into the HTML. It's the most common tag you'll use.</p>
+            <p><strong>Example:</strong></p>
+            <p>Hello, <strong><%= name %></strong>!</p>
+            <p>Your favorite number is: <strong><%= favoriteNumber %></strong></p>
+        </div>
+
+        <!-- CONTROL FLOW -->
+        <div class="section">
+            <h2>2. Control Flow with <% %></h2>
+            <p>The <code>&lt;% %&gt;</code> tag allows you to embed JavaScript logic like loops and conditionals directly into your HTML.</p>
+            
+            <h3>Conditionals (if/else)</h3>
+            <% if (isRaining) { %>
+                <p>It's raining! Don't forget your umbrella.</p>
+            <% } else { %>
+                <p>It's not raining. Enjoy the weather!</p>
+            <% } %>
+
+            <h3>Loops (for)</h3>
+            <p>Here are your to-do items:</p>
+            <ul>
+                <% todos.forEach(function(todo) { %>
+                    <li><%= todo %></li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <!-- INCLUDING PARTIALS -->
+        <div class="section">
+            <h2>3. Including Partials with <%- include %></h2>
+            <p>The <code>&lt;%- include('partials/header') %&gt;</code> tag lets you include other EJS files (called partials) into your current template. This is great for reusing components like headers and footers.</p>
+            <%- include('partials/header') %>
+            <p>This content is in the main file.</p>
+            <%- include('partials/footer') %>
+        </div>
+
+        <!-- UNESCAPED HTML -->
+        <div class="section">
+            <h2>4. Unescaped HTML with <%- %></h2>
+            <p>The <code>&lt;%- %&gt;</code> tag outputs unescaped HTML. Use this with caution, as it can be a security risk if the data is user-provided.</p>
+            <p><strong>Escaped (default with <%= %>):</strong> <%= someHtml %></p>
+            <p><strong>Unescaped (with <%- %>):</strong> <%- someHtml %></p>
+        </div>
+    </div>
+</body>
+</html>
